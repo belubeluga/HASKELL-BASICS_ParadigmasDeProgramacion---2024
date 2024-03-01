@@ -39,3 +39,7 @@ esNumPrimo x | length (divisores x) == 2 = True
 
 cantDivisoresPrimos :: Int -> Int
 cantDivisoresPrimos x = length [y | y <-  divisores x, esNumPrimo y]
+
+inverso :: Float -> Maybe Float
+inverso 0 = Nothing
+inverso x = Just (1/x)

@@ -70,5 +70,12 @@ bisiesto x | (mod x 4 == 0 || mod x 400 == 0) && (mod x 100 /= 0) = True
 
 -- test xs = [y| y <- xs, 'predicado']  CLOSURE              (como lista por comprension)
 -- y variable
-test [1,2,3] = []
+-- test [1,2,3] = []
 -- devuelve los elementos de la lista que cumplen el predicado
+
+
+
+-- data Maybe a = Nothing | Just a      (ataja el error si no devuelve nada)
+-- data Either a b = Left a | Right b   (/= tipos de dato)
+
+{-test :: Int -> Either Int Char ==> devuelve Left 3 || Right 'a'-}
