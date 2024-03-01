@@ -54,3 +54,21 @@ valorAbsoluto x |x < 0 = -x --valores negativos entre parentesis
 bisiesto :: Int -> Bool
 bisiesto x | (mod x 4 == 0 || mod x 400 == 0) && (mod x 100 /= 0) = True
            |otherwise = False
+
+
+-- :l funciones.hs
+
+
+
+
+
+
+
+
+------------------------------------------------------------29/02/24
+{- MODULARIZACION -}
+
+-- test xs = [y| y <- xs, 'predicado']  CLOSURE              (como lista por comprension)
+-- y variable
+test [1,2,3] = []
+-- devuelve los elementos de la lista que cumplen el predicado
