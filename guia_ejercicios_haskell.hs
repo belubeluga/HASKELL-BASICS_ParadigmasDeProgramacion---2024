@@ -57,6 +57,7 @@ bisiesto x | (mod x 4 == 0 || mod x 400 == 0) && (mod x 100 /= 0) = True
 
 
 -- :l funciones.hs
+-- :r (recarga el primer archivo)
 
 
 
