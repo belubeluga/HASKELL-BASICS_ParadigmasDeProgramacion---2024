@@ -1,6 +1,4 @@
 ------------------------------------------------------------29/02/24
-import Data.Maybe
-import Data.Char
 
 {- PRACTICA DE PROGRAMACION FUNCIONAL -}
 
