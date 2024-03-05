@@ -43,6 +43,7 @@
 import Data.Maybe
 import Data.Char
 import GHC.Real
+import Distribution.Simple.Utils (xargs)
 
 valorAbsoluto :: Float -> Float
 valorAbsoluto x |x < 0 = -x --valores negativos entre parentesis
@@ -81,7 +82,7 @@ bisiesto x | (mod x 4 == 0 || mod x 400 == 0) && (mod x 100 /= 0) = True
 
 {-test :: Int -> Either Int Char ==> devuelve Left 3 || Right 'a'-}
 
-f3 n | n>= 3 = 5
+f33 n | n>= 3 = 5
      | n == 2 = undefined -- tira ERROR
      | otherwise = 8
 
@@ -97,5 +98,87 @@ f3 n | n>= 3 = 5
                 VARIABLES DE TIPO
                 denotan familias de tipos (x el num - int o float...)
 
+                IDENTIDAD
+
                 -- null :: Foldable t => t a -> Bool (esto es la aridad) de null
+
 -}
+
+------------------------------------------------------------5/03/24
+triple x = 3*x
+
+maximo x y | x>= y = x
+           | otherwise = y
+
+distintos :: Eq a => a -> a -> Bool --(MISMO TIPO DE DATO)
+distintos x y = x /= y --vale para num y caracter (cualquier tipo que sepa distinguirse = Eq)
+-- Eq (todos los objetos q pueden ser distinguidos entre si)
+
+distintos' :: (Eq a, Eq b) => a -> b -> Bool
+distintos' x y = x /= x
+
+-- IMPORTANTE LAS SANGRÍAS!!
+
+cinco :: Int
+cinco = 5
+-- sqrt :: Floating a => a -> a
+
+triple1 = triple 3 -- triple1 :: Integer
+triple2 = triple 3.0 -- triple2 :: Double
+
+{-       
+        CLASES : particiones del universo
+
+        - Integral : {Int, Integer, ...) { mod, div, ...)
+        - Fractional : { Float, Double, ...) { (D,...)
+        - Floating : { Float, Double, ... } ( sqrt, sin, cos, tan, ...}
+        - Num : { Int, Integer, Float, Double, ... ) { (+), (*), abs, ...)
+        - Ord : ( Bool, Int, Integer, Float, Double, ...) ( (<=), compare }
+        - Eq: { Bool, Int, Integer, Float, Double, ... } ( (==), (/=) }      
+
+        TIPO /= CLASE 
+-}
+
+-- cantidad de raices de x^2 + bx + c
+raices :: (Num t, Ord t) => t -> t -> Int
+raices b c | d > 0  = 2
+           | d == 0 = 1
+           | otherwise = 0
+        where d = b^2 - 4 * c
+
+
+f1 x y z = x ** y + z <= x + y ** z
+ 
+f2 x y = sqrt x / sqrt y -- sqrt solo recibe float
+
+f3 x y = div (sqrt x) (sqrt y)
+
+f4 x y z |    x == y   = z
+         | x ** y == y = z
+         |  otherwise  = z
+          
+f5 x y z |    x == y   = z
+         | x ** y == y = x
+         |  otherwise  = y
+
+cinco' :: Int
+cinco' = 5
+
+--          TUPLAS
+-- (las unicas que admiten elementos de diferentes tipos)
+
+suma :: (Float, Float) -> (Float, Float) -> (Float, Float)
+suma (vx, vy) (wx, wy) = (vx + wx, vy + wy)
+
+normaVectorial1 :: (Float, Float) -> Float
+normaVectorial1 (x, y) = sqrt (x ^ 2 + y ^ 2)
+
+normaVectorial2 :: Float -> Float -> Float
+normaVectorial2 x y = sqrt (x ^ 2 + y ^ 2)
+
+normalSuma :: (Float, Float) -> (Float, Float) -> Float
+normalSuma v1 v2 = normaVectorial1 (suma v1 v2)
+
+norma2Suma :: (Float, Float) -> (Float, Float) -> Float
+norma2Suma v1 v2 = normaVectorial2 (fst s) (snd s)
+        where s = suma v1 v2
