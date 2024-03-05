@@ -80,3 +80,22 @@ bisiesto x | (mod x 4 == 0 || mod x 400 == 0) && (mod x 100 /= 0) = True
 -- data Either a b = Left a | Right b   (/= tipos de dato)
 
 {-test :: Int -> Either Int Char ==> devuelve Left 3 || Right 'a'-}
+
+f3 n | n>= 3 = 5
+     | n == 2 = undefined -- tira ERROR
+     | otherwise = 8
+
+
+------------------------------------------------------------4/03/24
+{- 
+
+                TIPOS 
+                Int = { + - * div mod }
+                Float = { + - * / }
+                Bool = True False { && || not }
+
+                VARIABLES DE TIPO
+                denotan familias de tipos (x el num - int o float...)
+
+                -- null :: Foldable t => t a -> Bool (esto es la aridad) de null
+-}
