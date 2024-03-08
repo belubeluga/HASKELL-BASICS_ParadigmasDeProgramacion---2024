@@ -164,7 +164,7 @@ f5 x y z |    x == y   = z
 cinco' :: Int
 cinco' = 5
 
---          TUPLAS
+--          TUPLAS          --
 -- (las unicas que admiten elementos de diferentes tipos)
 
 suma :: (Float, Float) -> (Float, Float) -> (Float, Float)
@@ -182,3 +182,23 @@ normalSuma v1 v2 = normaVectorial1 (suma v1 v2)
 norma2Suma :: (Float, Float) -> (Float, Float) -> Float
 norma2Suma v1 v2 = normaVectorial2 (fst s) (snd s)
         where s = suma v1 v2
+
+
+------------------------------------------------------------7/03/24
+
+--        TIPOS ALGEBRAICOS     --
+{- armado de tipos y constructores-}
+
+data Helado = Vasito Gusto
+            | Cucurucho Gusto Gusto (Maybe Baño)
+            | Capelina Gusto Gusto [Agregado]
+            | Pote Gusto Gusto Gusto
+data Gusto = Chocolate | Ddl | Pistacho | Frambuesa
+data Agregado = Almendras | Rocklets
+data Baño = Blanco | Negro 
+
+
+
+--              AB ARBOLES BINARIOS          --
+-- Nil = constructor 
+data AB a = Nil | Bin (AB a) a (AB a) -- Arbol Binario --> Nil :: AB a

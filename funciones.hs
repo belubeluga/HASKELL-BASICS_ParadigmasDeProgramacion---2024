@@ -1,7 +1,7 @@
 {- EJERCICIO 2 -}
-import Data.Maybe
-import Data.Char
-import GHC.Real
+import Data.Maybe ()
+import Data.Char ()
+import GHC.Real ()
 import Distribution.Simple.Utils (xargs)
 
 {- EJERCICIO 1 -}
@@ -60,7 +60,7 @@ aEntero (Right True) = 1
 
 {- EJERCICIO 4 -}
 limpiar :: String -> String -> String
-limpiar string1 string2 = [y| y <- string2, not (elem y string1)]
+limpiar string1 string2 = [y| y <- string2, not (elem y string1)] --listas xs ys (la s sugiere lista)
 
 difPromedio :: [Float] -> [Float] -- PREGUNTAR EL FROM INTEGRAL
 difPromedio lista_num = [y - (sum lista_num/ fromIntegral (length lista_num)) | y <- lista_num]
@@ -71,3 +71,23 @@ todosIguales lista | length lista <= 1 = True
                    | otherwise = False
 
 {- EJERCICIO 5 -}
+data AB a = Nil  | Bin (AB a) a (AB a) deriving (Eq, Show) -- Arbol Binario --> Nil :: AB a
+
+nullTree :: AB a -> Bool --indica si el arbol es vacio
+nullTree Nil = True
+nullTree x = False
+
+negTree :: AB Bool -> AB Bool
+negTree Nil = Nil
+negTree (Bin ramaIzq True ramaD) =  Bin (negTree ramaIzq) False (negTree ramaD)
+negTree (Bin ramaIzq False ramaD) =  Bin (negTree ramaIzq) True (negTree ramaD)
+
+prodTree :: AB Integer -> Integer -- que calcula el producto de todos los nodos del  ́arbol.
+prodTree Nil = 1
+prodTree (Bin ramaIzq num ramaD) = num * prodTree ramaIzq * prodTree ramaD
+
+arbolBinario1 = Bin (Bin Nil 2 Nil) 1 (Bin (Bin Nil 4 Nil) 3 Nil)
+arbolBinario2 = Nil
+arbolBinario3 = Bin (Bin Nil True Nil) False (Bin (Bin Nil True Nil) False Nil)
+
+{- EJERCICIO 6 -}
