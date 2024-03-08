@@ -90,4 +90,26 @@ arbolBinario1 = Bin (Bin Nil 2 Nil) 1 (Bin (Bin Nil 4 Nil) 3 Nil)
 arbolBinario2 = Nil
 arbolBinario3 = Bin (Bin Nil True Nil) False (Bin (Bin Nil True Nil) False Nil)
 
-{- EJERCICIO 6 -}
+{- EJERCICIO 6 -} -- HACER!!!!!!!!!!!!!!!!!!!!
+max2 :: Ord a => (a, a) -> a
+max2(x,y) |x>=y=x
+        | otherwise = y
+
+normaVectorial :: Floating a => (a, a) -> a
+normaVectorial (x,y) = sqrt (x^2+y^2)
+
+subtract1 :: Integer -> Integer -> Integer
+subtract1 = flip (-)
+
+restarUno :: Integer -> Integer
+restarUno = subtract1 1
+
+evaluarEnCero :: (Integer -> t) -> t
+evaluarEnCero = \f->f 0
+
+dosVeces :: (a -> a) -> a -> a
+dosVeces = \f->f.f
+
+flipAll :: [a -> b -> c] -> [b -> a -> c]
+flipAll = map flip
+

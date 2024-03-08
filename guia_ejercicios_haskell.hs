@@ -215,7 +215,7 @@ subtract :: Integer -> Integer -> Integer
 subtract = flip (-)
 
 {-restarUno :: t
-restarUno = substract 1-}
+restarUno = subtract 1-}
 evaluarEnCero = \f->f 0
 dosVeces = \f->f.f
 flipAll = map flip
