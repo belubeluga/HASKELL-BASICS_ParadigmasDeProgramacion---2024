@@ -202,3 +202,44 @@ data Baño = Blanco | Negro
 --              AB ARBOLES BINARIOS          --
 -- Nil = constructor 
 data AB a = Nil | Bin (AB a) a (AB a) -- Arbol Binario --> Nil :: AB a
+
+{-    CURRIFICACION   -}
+max2 :: Ord a => (a, a) -> a
+max2(x,y) |x>=y=x
+          | otherwise = y
+
+normaVectorial :: Floating a => (a, a) -> a
+normaVectorial (x,y) = sqrt (x^2+y^2)
+
+subtract :: Integer -> Integer -> Integer
+subtract = flip (-)
+
+{-restarUno :: t
+restarUno = substract 1-}
+evaluarEnCero = \f->f 0
+dosVeces = \f->f.f
+flipAll = map flip
+
+
+-- funcion parcial: cuando definis f definis infinitas funciones parciales
+--(max3 8) :: (Ord a , Num a) => a -> a
+
+
+
+
+
+
+{- EJERCICIO 9 -}
+{-Una tripla pitag ́orica es una tripla (a,b,c) de enteros positivos tal que a2 + b2 = c2.
+La siguiente expresio ́n intenta ser una definicion de una lista (infinita) de triplas pitagorica.
+Explicar por que esta definicio ́n no es u ́til. Dar una definici ́on mejor-}
+pitagoricas :: [(Integer,Integer,Integer)]
+pitagoricas = [(a,b,c) | c <- [1..], a <- [1..c], b <-[1..c], a^2 + b^2 == c^2] -- OJO CON EL ORDEN DENTRO DE LOS CLOSURES
+-- cambio de orden para que vaya devolviendo valores (sino no devolvia)
+
+{- EJERCICIO 11 -}
+{-Usando listas por comprension, escribir la funcion partir::[a]->[([a],[a])] que, dada una lista xs, 
+devuelve todas las maneras posibles de partirla en dos sublistas xs1 y xs2 tales que xs1++xs2 == xs.
+Ejemplo: partir [1,2,3] devuelve [([],[1,2,3]),([1],[2,3]),([1,2],[3]),([1,2,3],[])]  (conjunto de partes) -}
+partir :: [num] -> [([num],[num])]
+partir xs = [(take x xs, drop x xs)| x <- [0..length xs]]
