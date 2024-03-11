@@ -19,7 +19,7 @@ y luego queda listo para partir al siguiente destino.
 Para sostener este modelo se cuenta con las siguientes entidades:
 (nada de esto se puede modificar)  -}
 
-module Container ( Container, newC, destinationC, netC )
+{-module Container ( Container, newC, destinationC, netC )
  where
 
 data Container = Con String Int deriving (Eq, Show)-- (Eq, Show) para q use el igual y el show pre establecido        -- (todo desps del = == constructor)
@@ -27,7 +27,7 @@ data Container = Con String Int deriving (Eq, Show)-- (Eq, Show) para q use el i
 newC :: String -> Int -> Container   -- construye un Contenedor dada una ciudad de destino y un peso en toneladas
 destinationC :: Container -> String  -- responde la ciuda destino del contenedor
 netC :: Container -> Int             -- responde el peso en toneladas del contenedor
-
+-}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 {-module Route ( Route, newR, inOrderR )
     where
