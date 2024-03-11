@@ -4,7 +4,8 @@ modelamos el buque de una compañia naviera de contenedores
 El buque tiene una ruta establecida y una cantidad de bahias para estiba.
 Todas las bahias toleran la misma cantidad de contenedores apilados.
 
-Al momento de llegar a uno de los destinos de su ruta tiene que poder descargar los contenedores con ese destino simplemente desapilando.
+Al momento de llegar a uno de los destinos de su ruta tiene que poder descargar 
+los contenedores con ese destino simplemente desapilando.
 Con lo cual al momento de cargar no puede apilarse un contenedor con destino posterior al que le queda de bajo.
 La carga de un contenedor se hace solo si hay una bahia que lo acepte
 
@@ -28,16 +29,16 @@ destinationC :: Container -> String  -- responde la ciuda destino del contenedor
 netC :: Container -> Int             -- responde el peso en toneladas del contenedor
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-module Route ( Route, newR, inOrderR )
+{-module Route ( Route, newR, inOrderR )
     where
 
 data Route = Rou [ String ] deriving (Eq, Show)
 
 newR :: [ String ] -> Route                    -- construye una ruta segun una lista de ciudades
 inOrderR :: Route -> String -> String -> Bool  -- indica si la primer ciudad consultada esta antes que la segunda ciudad en la ruta
-
+-}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-module Stack ( Stack, newS, freeCellsS, stackS, netS, holdsS, popS )
+{-module Stack ( Stack, newS, freeCellsS, stackS, netS, holdsS, popS )
  where
 
 import Container
@@ -51,9 +52,9 @@ stackS :: Stack -> Container -> Stack         -- apila el contenedor indicado en
 netS :: Stack -> Int                          -- responde el peso neto de los contenedores en la pila
 holdsS :: Stack -> Container -> Route -> Bool -- indica si la pila puede aceptar el contenedor considerando las ciudades en la ruta
 popS :: Stack -> String -> Stack              -- quita del tope los contenedores con destino en la ciudad indicada
-
+-}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-module Vessel ( Vessel, newV, freeCellsV, loadV, unloadV, netV )
+{-module Vessel ( Vessel, newV, freeCellsV, loadV, unloadV, netV )
  where
 
 import Container
@@ -67,7 +68,7 @@ freeCellsV :: Vessel -> Int            -- responde la celdas disponibles en el b
 loadV :: Vessel -> Container -> Vessel -- carga un contenedor en el barco
 unloadV :: Vessel -> String -> Vessel  -- responde un barco al que se le han descargado los contenedores que podían descargarse en la ciudad
 netV :: Vessel -> Int                  -- responde el peso neto en toneladas de los contenedores en el barco
-
+-}
 
 
 -- MODULOS -> para separa y ordenar
