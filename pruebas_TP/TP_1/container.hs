@@ -12,3 +12,4 @@ destinationC (Con destino num) = destino --(?)
 
 netC :: Container -> Int             -- responde el peso en toneladas del contenedor
 netC (Con destino num) = num
+

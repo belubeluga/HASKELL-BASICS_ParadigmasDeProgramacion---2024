@@ -1,3 +1,8 @@
+import Container
+import Route
+import Stack
+
+
 {-BuqueTruck
 
 modelamos el buque de una compañia naviera de contenedores
@@ -72,3 +77,22 @@ netV :: Vessel -> Int                  -- responde el peso neto en toneladas de 
 
 
 -- MODULOS -> para separa y ordenar
+
+
+cont = newC "MDQ" 5
+barco = cargarV barco cont
+otroBarco = cargarV barco cont
+dobleBarco = cargarV otroBarco cont
+
+test = [ netV otroBarco == 5,
+         netV dobleBarco == 10]
+         --expresar cada funcionalidad nueva en un test para que este comprobado que funcione
+
+         -- IGNORAR/ ATAJAR ERRORES
+
+{-
+1) hacer las funciones
+2) limitaciones
+ir haciendo tests en el momento
+...
+-}
