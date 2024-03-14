@@ -113,3 +113,27 @@ dosVeces = \f->f.f
 flipAll :: [a -> b -> c] -> [b -> a -> c]
 flipAll = map flip
 
+{- EJERCICIO 9 -}
+{-Una tripla pitag ́orica es una tripla (a,b,c) de enteros positivos tal que a2 + b2 = c2.
+La siguiente expresio ́n intenta ser una definicion de una lista (infinita) de triplas pitagorica.
+Explicar por que esta definicio ́n no es u ́til. Dar una definici ́on mejor-}
+pitagoricas :: [(Integer,Integer,Integer)]
+pitagoricas = [(a,b,c) | c <- [1..], a <- [1..c], b <-[1..c], a^2 + b^2 == c^2] -- OJO CON EL ORDEN DENTRO DE LOS CLOSURES
+-- cambio de orden para que vaya devolviendo valores (sino no devolvia)
+
+{- EJERCICIO 11 -}
+{-Usando listas por comprension, escribir la funcion partir::[a]->[([a],[a])] que, dada una lista xs, 
+devuelve todas las maneras posibles de partirla en dos sublistas xs1 y xs2 tales que xs1++xs2 == xs.
+Ejemplo: partir [1,2,3] devuelve [([],[1,2,3]),([1],[2,3]),([1,2],[3]),([1,2,3],[])]  (conjunto de partes) -}
+partir :: [num] -> [([num],[num])]
+partir xs = [(take x xs, drop x xs)| x <- [0..length xs]]
+
+{-  EJERCICIO 14  -}
+-- Redefinir usando foldr las funciones sum, elem, (++), filter y map
+
+-- sum
+sumarLista :: Num a => [a] -> a
+sumarLista = foldr (+) 0
+
+-- elem
+elem2 lista elemento = foldr (+) (==) elemento lista --HACER!!!
