@@ -274,7 +274,7 @@ foldr F z[] = z
 foldr F z (x:xs) = F x (foldr F z xs)
 foldr mod 5 [7,11,8]
 
-1:[] constructor de lista == [1]
+1:[] constructor de lista == [1]                TIENEN DISTINTA ARIDAD
 
 | FOLDL
 foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b     -- izquierda -> derecha   
@@ -293,3 +293,10 @@ f :: a -> [[a]] -> [[a]]
 f x xss = [x : ys| ys <- xss ] ++ xss -- : como constructor de lista que lo agrega al principio
 partes xs = foldr f [[]] xs -- [[]] == caso base 
 -- Partes [2] == [[2] []]
+
+------------------------------------------------------------15/03/24
+{- COMPOSICION DE FUNCIONES -}
+prueba = (+) 3 (mod 5 3)
+prueba2 = ((+) 3.mod 5) 3 --a partir del punto es lo que se calcula primero con el elemento de afuera
+
+prueba3 = map (+ 2) [2,4]

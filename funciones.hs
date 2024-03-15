@@ -128,7 +128,7 @@ Ejemplo: partir [1,2,3] devuelve [([],[1,2,3]),([1],[2,3]),([1,2],[3]),([1,2,3],
 partir :: [num] -> [([num],[num])]
 partir xs = [(take x xs, drop x xs)| x <- [0..length xs]]
 
-{-  EJERCICIO 14  -}
+{-  EJERCICIO 14  TERMINAR!!!!!-}
 -- Redefinir usando foldr las funciones sum, elem, (++), filter y map
 
 -- sum
@@ -136,4 +136,35 @@ sumarLista :: Num a => [a] -> a
 sumarLista = foldr (+) 0
 
 -- elem
-elem2 lista elemento = foldr (+) (==) elemento lista --HACER!!!
+elem2 :: Eq a => a -> [a] -> Bool
+elem2 elemento = foldr (||) False . map (== elemento)
+
+-- hacer funcion que se llame pegarAtras
+        -- pegarAtras 1 [2,3,4] == [2,3,4,1]
+
+pegarAtras :: a -> [a] -> [a]
+pegarAtras elemento lista = reverse (elemento : reverse lista) -- usando constructor de lista
+
+-- redefinir ++ usando foldr, pegarAtras y composicion
+concat2 a  = foldr pegarAtras a . reverse
+
+-- 2)
+sumaAlt :: (Foldable f, Num a) => f a -> a
+sumaAlt = foldr (-) 0
+
+sumaAltReves = sumaAlt. reverse
+
+{- EJERCICIO 15 -}
+-- 1)
+
+
+-- 2) funcion prefijos (usar foldl)
+{- [[5,1,2]] -> [[], [5], [1], [2], [5,1], ] -}
+
+func :: [[a]] -> [[a]]
+func xss = [ys| ys <- tail xss] ++ xss
+
+--prefijo :: [[a]] -> [[a]]
+--prefijo = foldl func [[]]. reverse 
+
+-- 3)
