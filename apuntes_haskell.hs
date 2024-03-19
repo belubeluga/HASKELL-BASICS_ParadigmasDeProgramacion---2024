@@ -300,3 +300,39 @@ prueba = (+) 3 (mod 5 3)
 prueba2 = ((+) 3.mod 5) 3 --a partir del punto es lo que se calcula primero con el elemento de afuera
 
 prueba3 = map (+ 2) [2,4]
+
+
+------------------------------------------------------------19/03/24
+{- RECURSION -}
+--hacer uso constante del espacio de memoria
+
+{- LISTAS -}
+-- [] , x:xs
+
+{- foldr -}
+-- foldr (\each fold -> termino) neutro fuente
+-- -> significa "resuelve"
+sumaA = foldr (+) 0 [1,2,3] == 1+2+3+0 -- +1 ( +2 ( + 3 0 ))
+restaA = foldr (-) 0 [2,3,4]
+
+andA = foldr (&&) True 
+
+orR = foldr (or) False
+
+countA target = foldr (\each fold -> if target == each then fold + 1 else fold) 0
+isAll target = foldr (\ each fold -> target == each && fold ) True
+isAll2 target = foldr (\ each fold -> (&&) (target == each) fold) True
+isAll3 target = foldr (\ each fold -> (&&) target == each ) True
+isAll4 target = foldr (\ each -> (&&) $ target == each ) True
+
+
+largo = foldr (\x acc -> acc + 1) 0
+largo1 = foldr (\x -> (+) 1 ) 0
+largo2 = (\_ -> (+) 1 ) 0
+
+mapA0 f = foldr (\x acc -> (f x):acc) []
+mapA2 f = foldr (\x acc -> (:) (f x) acc) []
+mapA3 f = foldr (\x acc -> ((:).f) x acc) []
+mapA4 f = foldr (\x acc -> ((:).f) x acc) []
+mapA5 f = foldr ((:).f) []
+mapA = (\f -> foldr ((:).f)) []
