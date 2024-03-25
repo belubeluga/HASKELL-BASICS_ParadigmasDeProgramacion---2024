@@ -31,10 +31,10 @@
 -- (!!) :: GHC.Stack.Types.HasCallStack => [a] -> Int -> a      (devuelve el elemento en el indice indicado)
 -- elem :: (Foldable t, Eq a) => a -> t a -> Bool (chequea si un elemento esta en el foldable) //// elem 3 [1,2,4,3] => True //// elem 3 [1,2,4] => False
 
-{-  
+{-
         || OR       && AND
         mod RESTO   div PARTE ENTERA
-        == 
+        ==
 
 -}
 
@@ -88,9 +88,9 @@ f33 n | n>= 3 = 5
 
 
 ------------------------------------------------------------4/03/24
-{- 
+{-
 
-                TIPOS 
+                TIPOS
                 Int = { + - * div mod }
                 Float = { + - * / }
                 Bool = True False { && || not }
@@ -126,7 +126,7 @@ cinco = 5
 triple1 = triple 3 -- triple1 :: Integer
 triple2 = triple 3.0 -- triple2 :: Double
 
-{-       
+{-
         CLASES : particiones del universo
 
         - Integral : {Int, Integer, ...) { mod, div, ...)
@@ -134,9 +134,9 @@ triple2 = triple 3.0 -- triple2 :: Double
         - Floating : { Float, Double, ... } ( sqrt, sin, cos, tan, ...}
         - Num : { Int, Integer, Float, Double, ... ) { (+), (*), abs, ...)
         - Ord : ( Bool, Int, Integer, Float, Double, ...) ( (<=), compare }
-        - Eq: { Bool, Int, Integer, Float, Double, ... } ( (==), (/=) }      
+        - Eq: { Bool, Int, Integer, Float, Double, ... } ( (==), (/=) }
 
-        TIPO /= CLASE 
+        TIPO /= CLASE
 -}
 
 -- cantidad de raices de x^2 + bx + c
@@ -148,7 +148,7 @@ raices b c | d > 0  = 2
 
 
 f1 x y z = x ** y + z <= x + y ** z
- 
+
 f2 x y = sqrt x / sqrt y -- sqrt solo recibe float
 
 f3 x y = div (sqrt x) (sqrt y)
@@ -156,7 +156,7 @@ f3 x y = div (sqrt x) (sqrt y)
 f4 x y z |    x == y   = z
          | x ** y == y = z
          |  otherwise  = z
-          
+
 f5 x y z |    x == y   = z
          | x ** y == y = x
          |  otherwise  = y
@@ -195,12 +195,12 @@ data Helado = Vasito Gusto
             | Pote Gusto Gusto Gusto
 data Gusto = Chocolate | Ddl | Pistacho | Frambuesa
 data Agregado = Almendras | Rocklets
-data Baño = Blanco | Negro 
+data Baño = Blanco | Negro
 
 
 
 --              AB ARBOLES BINARIOS          --
--- Nil = constructor 
+-- Nil = constructor
 data AB a = Nil | Bin (AB a) a (AB a) -- Arbol Binario --> Nil :: AB a
 
 {-    CURRIFICACION   -}
@@ -231,7 +231,7 @@ flipAll = map flip
 ------------------------------------------------------------11,12/03/24
 {-
 BUEN DISEÑO: visualizaciones, mapping, affordances
-TOPDOWN , BOTTOM UP 
+TOPDOWN , BOTTOM UP
 estrategias de procesamiento de información
         TOPDOWN suele no hacer cosas demas porque va haciendo funciones para cumplis un objetivo
         mientras que BOTTOM DOWN suele overachieve con especificaciones no demandadas.
@@ -251,7 +251,7 @@ eval (Mult a b) = a * b
 eval (Divi a b) = div a b
 
 data Peano = Succ Peano | Zero -- tipo de dato algebraico Peano que representa los números naturales
-        deriving Show 
+        deriving Show
 
 incr :: Peano -> Peano
 incr a = Succ a --a es otro valor de tipo Peano y Succ a representa el sucesor de a
@@ -266,10 +266,10 @@ add (Succ n) p = Succ ( add n p ) --delegar en el lenguaje para que resuelva
 
 
 
-------------------------------------------------------------14/03/24                    
-{-   
-| FOLDR   
-foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b --derecha a izquierda (recursion)       
+------------------------------------------------------------14/03/24
+{-
+| FOLDR
+foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b --derecha a izquierda (recursion)
 foldr F z[] = z
 foldr F z (x:xs) = F x (foldr F z xs)
 foldr mod 5 [7,11,8]
@@ -277,7 +277,7 @@ foldr mod 5 [7,11,8]
 1:[] constructor de lista == [1]                TIENEN DISTINTA ARIDAD
 
 | FOLDL
-foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b     -- izquierda -> derecha   
+foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b     -- izquierda -> derecha
 foldl F z[] = z
 foldl F z (x:xs) = foldl F(F(zx)) xs
 foldl mod 100 [35,11,5,2]
@@ -291,7 +291,7 @@ partes :: [a] -> [[a]]
 
 f :: a -> [[a]] -> [[a]]
 f x xss = [x : ys| ys <- xss ] ++ xss -- : como constructor de lista que lo agrega al principio
-partes xs = foldr f [[]] xs -- [[]] == caso base 
+partes xs = foldr f [[]] xs -- [[]] == caso base
 -- Partes [2] == [[2] []]
 
 ------------------------------------------------------------15/03/24
@@ -315,7 +315,7 @@ prueba3 = map (+ 2) [2,4]
 sumaA = foldr (+) 0 [1,2,3] == 1+2+3+0 -- +1 ( +2 ( + 3 0 ))
 restaA = foldr (-) 0 [2,3,4]
 
---andA = foldr (&&) True 
+--andA = foldr (&&) True
 
 --orR = foldr (or) False
 
@@ -336,3 +336,25 @@ mapA3 f = foldr (\x acc -> ((:).f) x acc) []
 mapA4 f = foldr (\x acc -> ((:).f) x acc) []
 mapA5 f = foldr ((:).f) []
 --mapA = (\f -> foldr ((:).f)) []
+
+------------------------------------------------------------25/03/24
+
+reverso = foldl (\fold each -> each : fold) []
+reverso2 = foldl (\fold each -> (:) each fold) []
+
+reverso3 :: t [a] -> [a]
+reverso3 = foldl (\fold each -> flip (:) each fold) []
+
+suma1 :: Int -> Int -> Int
+suma1 a b = a + b
+suma1a = suma 1
+suma_1 = (\y -> 1 + y)
+
+
+{- CURRY -}
+--descomposicion de una funcion en sus diferentes parametros
+
+:m + Data.List  --para obtener sort
+descSort = reverse . sort
+descSort1 = (\x -> reverse (sort x))
+descSort2 = reverse (sort x)
