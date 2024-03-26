@@ -2,6 +2,27 @@
 
 {- PRACTICA DE PROGRAMACION FUNCIONAL -}
 
+-- PROGRAMA es una SIMULACION del comportamiento del hardware
+{-
+PARADIGMAS DE LA PROGRAMACION
+
+entorno de desarrollo o interfaz de usuario diferencias
+Leer
+Guia mate discreta o análisis
+
+Paradigmas de la programación:
+Imperativo, orientada a objetos, funcional, logico
+
+Prolo (paradigma logico)
+Huskel (funcional) Scala (?)
+
+Heurística
+
+Confuse the escenas of what we are doing with the tools we end up using
+
+Ciencia joven no dan historia y comunidad científica joven
+
+Simulación que permite resolver problemas-}
 --ghci para abrir
 -- ctrl L para limpiar
 
@@ -339,22 +360,26 @@ mapA5 f = foldr ((:).f) []
 
 ------------------------------------------------------------25/03/24
 
-reverso = foldl (\fold each -> each : fold) []
+{-reverso = foldl (\fold each -> each : fold) []
 reverso2 = foldl (\fold each -> (:) each fold) []
 
 reverso3 :: t [a] -> [a]
-reverso3 = foldl (\fold each -> flip (:) each fold) []
+reverso3 = foldl (\fold each -> flip (:) each fold) []-}
 
 suma1 :: Int -> Int -> Int
 suma1 a b = a + b
-suma1a = suma 1
+--suma1a = suma 1
 suma_1 = (\y -> 1 + y)
 
 
 {- CURRY -}
 --descomposicion de una funcion en sus diferentes parametros
 
-:m + Data.List  --para obtener sort
+{-:m + Data.List  --para obtener sort
 descSort = reverse . sort
 descSort1 = (\x -> reverse (sort x))
-descSort2 = reverse (sort x)
+descSort2 = reverse (sort x)-}
+
+
+
+{- LENGUAJES ORIENTADOS A OBJETOS -> delegar (con mensajes) -}
